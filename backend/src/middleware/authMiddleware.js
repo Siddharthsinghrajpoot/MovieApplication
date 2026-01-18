@@ -1,14 +1,17 @@
 import jwt from "jsonwebtoken";
 
 export const authMiddleware = (req, res, next) => {
+
+  
   const token = req.headers.token;
+    console.log(token);
 
   if (!token) {
     return res.status(401).json({ message: "Token required" });
   }
 
   try {
-    const decoded = jwt.verify(token, "secret");
+    const decoded = jwt.verify(token, process.env.jwt_secret );
     req.user = decoded; // { id, role }
     next();
   } catch (error) {

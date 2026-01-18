@@ -7,7 +7,7 @@ const router = express.Router();
 
 // GET all movies (any logged-in user)
 // ----------------------------
-router.get("/", authMiddleware, async (req, res) => {
+router.get("/all", authMiddleware, async (req, res) => {
   const movies = await Movie.find();
   res.json(movies);
 });
