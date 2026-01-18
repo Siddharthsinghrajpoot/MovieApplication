@@ -27,9 +27,9 @@ router.post("/Add", authMiddleware, adminOnly, async (req, res) => {
   const movie = await Movie.create({
     title,
     description,
-    rating,
-    releaseDate,
-    duration,
+    rating:Number(rating) ,
+    releaseDate: new Date(releaseDate),
+    duration: Number(duration),
     image
   });
 

@@ -26,9 +26,6 @@ JWT-based auth
 
 Role-based middleware (admin/user)
 
-⚠️ Note: Backend is fully complete — including admin operations (Add/Update/Delete movies).
-Frontend is user-facing only: users can view and search movies. Admin functionalities in frontend will be added in the future.
-
 🔐 Authentication Flow
 
 Register: Name, Email, Password, Role (admin/user)
@@ -49,7 +46,7 @@ Search movie (UI ready, functionality can be extended)
 
 Protected access using JWT
 
-Admin (Backend Ready)
+Admin (Frontend+Backend Ready)
 
 Add movie
 
@@ -57,36 +54,41 @@ Update movie
 
 Delete movie
 
-Admin operations not exposed in frontend yet
+All admin operations are protected via JWT + role check
 
-🧩 Component Structure
+
+🧩 Project Structure
 
 frontend/src/
 ├── pages/
 │   ├── Register.jsx
 │   ├── Login.jsx
-│   └── Movies.jsx
+│   ├── Movies.jsx
+│   └── AddMovie.jsx
 ├── components/
 │   ├── ProtectedRoutes.jsx
 │   ├── MovieCard.jsx
 │   └── SearchBar.jsx
 
-Clear separation of concerns
+Clean folder structure
 
-Reusable components for scalability
+Reusable components
 
-📡 API Endpoints
-Auth
+Easy to scale and extend
+
+📡API Endpoints 
+
+Auth Routes
 
 POST /api/auth/register → Register user
 
 POST /api/auth/login → Login user
 
-Movies
+Movie Routes
 
-GET /api/movies/all → All users
+GET /api/movies/all → All logged-in users
 
-GET /api/movies/:id → All users
+GET /api/movies/:id → All logged-in users
 
 POST /api/movies/add → Admin only
 
@@ -95,31 +97,30 @@ PUT /api/movies/:id → Admin only
 DELETE /api/movies/:id → Admin only
 
 ▶️ Running the Project
-
 Backend
+
 cd backend
 npm install
 npm run dev
 
 Frontend
+
 cd frontend
 npm install
 npm run dev
 
-Environment Variables
+💡 Why This Project is Interview-Ready
 
-Backend .env: PORT, MONGO_URI, JWT_SECRET
+Fully functional JWT-based authentication
 
-Frontend .env: VITE_API_URL=http://localhost:3000
+Proper role-based access control
 
-Why This Project is Interview-Ready
+Secure backend APIs
 
-Backend fully functional with secure role-based API
+Protected frontend routes
 
-Frontend ready for users with protected routes
+Clean and scalable project structure
 
-JWT-based authentication
+Demonstrates real-world MERN stack implementation
 
-Clean code structure and reusable components
 
-Demonstrates full-stack skills in MERN + JWT + Protected Routes

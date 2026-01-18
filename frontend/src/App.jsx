@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route ,Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Movies from "./pages/Movies";
+import AddMovie from "./pages/AddMovie";
 import ProtectedRoute from "./components/ProtectedRoutes";
 
 const App = () => {
@@ -9,13 +10,15 @@ const App = () => {
 
   return (
     <BrowserRouter>
-         <Routes>
+      <Routes>
 
         {/* DEFAULT ROUTE */}
         <Route
           path="/"
           element={
-            token ? <Navigate to="/movies" replace /> : <Navigate to="/register" replace />
+            token
+              ? <Navigate to="/movies" replace />
+              : <Navigate to="/register" replace />
           }
         />
 
@@ -41,13 +44,22 @@ const App = () => {
           }
         />
 
+        {/* PROTECTED ADD MOVIE */}
+        <Route
+          path="/add-movie"
+          element={
+            <ProtectedRoute>
+              <AddMovie />
+            </ProtectedRoute>
+          }
+        />
+
         {/* ANY WRONG URL */}
         <Route path="*" element={<Navigate to="/" replace />} />
 
       </Routes>
     </BrowserRouter>
   );
+};
 
-}
 export default App;
-
